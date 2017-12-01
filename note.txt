@@ -1,0 +1,83 @@
+    / rquitrment test มั้ง \
+  
+  /   Indiction test        \
+
+/     Unit test                \
+
+
+Indiction การ Test api 
+Api ที่ใช้มีอยู่ 2 แบบ หลัก
+1 SOAP web Service   // return เป็น XML เก่าแต่มีใช้ พวกเว็ปรัฐบาล
+2 RESTFUL web services // return เป็น JSON สมัยนี้จะเป็นแบบนี้ทั้งหมด
+
+    RESTFUL ทุกๆ API ที่ทุกคนเรียกใช้งานมันคือ Result คือ สิ่งที่ทุกคนเข้าถึงได้
+เราก็ต้องดูเราทำอะไรกับ Result ได้ 
+    - Fetch    
+    - add
+    - edit
+    - remove
+RESTFUL จะวิ่งกันผ่าน HTTP protocal
+    HTTP จะมี Method ให้เราใช้ได้ 4 อัน
+    - GET
+    - POST
+    - PUT /UPDATE
+    - DELETE
+*ถ้าเราใช้ RESTFUL เราจะต้องใช้คุณสมบัตของ HTTP 
+    - Fetch     GET
+    - add       POST
+    - edit      PUT/UPDATE
+    - remove    DELETE
+    https://spring.io/understanding/REST
+HTTP ก็จะมี 2 แบบ
+    - HTTP
+    - https
+เช่น 
+            ...... = Result
+http://api.lotto.com/.......
+
+http://api.lotto.com/student    = Result is student
+http://api.lotto.com/books      = Result is books
+http://api.lotto.com/mesage     = Result is mesage
+    
+ถ้าอยากได้ ข้อมูล นักศึกษาทั้งประเทศ ออกมาให้เรียก
+GET http://api.thai-university.com/student
+เอา แค่มหาลัย บูรพา
+GET http://api.thai-university.com/students?u=buu
+เอา แค่นิสิต รหัส 58160698
+GET http://api.thai-university.com/students/58160698
+
+กรนีข้อมูลยาวสัสๆ
+POST http://api.thai-university.com/students
+
+อัพเดทข้อมูล โดยแทรก Data ไป ใน Header
+PUT http://api.thai-university.com/students
+
+http จะมี คอนเซปคือ 
+
+[user]------>request---->[result]
+[user]<------response<---[result]
+
+การ request ประกอบด้วย
+    - query string (GET)
+    - paramiter (student/58160698)
+    - body
+    - header
+*เราส่ง Data ได้หลายแบบ แต่ละแบบก็มีจุดประสงค์ต่างกัน
+ถ้าใช้ post เราต้องส่ง body
+ถ้าส่ง put อาจจะต้องส่งหลายอัน
+
+npm install --save express
+
+functional test ปกติจะช้ากว่า unit test
+intication test ต้อง ต่อ api จริงเรียกจริง
+
+npm install --save body-parser
+
+postman
+
+{
+    "name" : "kanthakran",
+    "email" : "gun@gmail.com",
+    "university" : "BUU",
+    "year" : 1990
+}
